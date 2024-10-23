@@ -23,7 +23,24 @@ body {
     color: #AE22FF;
     font-weight: 600;
     letter-spacing: 5px;
+    animation: flicker 7.5s infinite;
 }
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        color: #AE22FF; /* Color original */
+        text-shadow: none;
+    }
+    20%, 24%, 55% {
+        color: white; /* Parpadeo a blanco */
+        text-shadow: 0 0 8px rgba(255, 255, 255, 0.6); /* Efecto de luz tenue */
+    }
+    70%, 72%, 75% {
+        color: white;
+        text-shadow: 0 0 12px rgba(255, 255, 255, 0.8); /* Parpadeo más fuerte */
+    }
+}
+
 
 .titleContainer p {
     font-size: 18px;
@@ -53,15 +70,32 @@ body {
 
 #playBtn {
     background-color: #AE22FF;
-    border: 1px solid #FFFFFF;
+    border: 3px solid #FFFFFF;
     margin: 0 40px;
 }
 
 #statsBtn {
     background-color: #FFFFFF;
-    border: 1px solid #AE22FF;
+    border: 3px solid #AE22FF;
     margin: 0 40px;
     color: #AE22FF;
+}
+
+#playBtn:hover {
+    border: 3px solid #AE22FF;
+    margin: 0 40px;
+    color: #AE22FF;
+    color: white;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.8); /* Parpadeo más fuerte */
+    transition: ease-in-out 0.3s;
+}
+
+#statsBtn:hover {
+    border: 3px solid #FFFFFF;
+    margin: 0 40px;
+    color: #AE22FF;
+    text-shadow: 0 0 12px rgba(191, 47, 248, 0.644); /* Parpadeo más fuerte */
+    transition: ease-in-out 0.3s;
 }
 
 .logoContainer {
@@ -74,3 +108,23 @@ body {
 .logoContainer img {
     width: 350px;
 }
+
+.logo {
+    margin-top: -25px;
+    animation: swing 2s ease-in-out infinite;
+    transform-origin: top center; /* Define el punto de balanceo */
+    z-index: -100;
+}
+
+@keyframes swing {
+    0% {
+        transform: rotate(10deg); /* Balanceo hacia un lado */
+    }
+    50% {
+        transform: rotate(-10deg); /* Balanceo hacia el otro lado */
+    }
+    100% {
+        transform: rotate(10deg); /* Balanceo hacia un lado */
+    }
+}
+
